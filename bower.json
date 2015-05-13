@@ -5,8 +5,8 @@
   "authors": [
     "The Polymer Authors"
   ],
-  "description": "\"The gold elements are built for e-commerce use-cases like checkout flows.\"",
-  "main": "\"gold-elements.html\"",
+  "description": "The gold elements are built for e-commerce use-cases like checkout flows.",
+  "main": "gold-elements.html",
   "keywords": [
     "web-components",
     "polymer",
