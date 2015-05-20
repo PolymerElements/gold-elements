@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../paper-styles/color.html">
 
 <link rel="import"href="../../iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../iron-form/iron-form.html">
 <link rel="import" href="../../paper-styles/color.html">
 <link rel="import" href="../../paper-input/paper-input.html">
 <link rel="import" href="../../paper-button/paper-button.html">
@@ -25,20 +26,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <template>
 
-    <div id="form">
+    <form is="iron-form" id="form">
 
       <div class="horizontal layout center form-title">
         <div class="avatar" item-icon></div>
         <div class="flex company">ACME Goods Co.</div>
       </div>
 
-      <paper-input label="Name on card" required auto-validate></paper-input>
+      <paper-input name="name" label="Name on card" required></paper-input>
 
-      <gold-cc-input auto-validate required></gold-cc-input>
+      <gold-cc-input name="cc-number" required value="4000 0000 0000 0002"></gold-cc-input>
 
       <div class="horizontal layout">
-        <gold-cc-expiration-input required auto-validate></gold-cc-expiration-input>
-        <gold-cc-cvc-input required auto-validate></gold-cc-cvc-input>
+        <gold-cc-expiration-input name="cc-expiration" required></gold-cc-expiration-input>
+        <gold-cc-cvc-input name="cc-cvc" required></gold-cc-cvc-input>
       </div>
 
       <br><br>
@@ -62,12 +63,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </div>
 
           <div class="horizontal layout end-justified">
-            <paper-button>Pay $32.99</paper-button>
+            <paper-button on-click="_submit">Pay $32.99</paper-button>
           </div>
         </div>
       </div>
 
-    </div>
+    </form>
   </template>
 </dom-module>
 
@@ -75,6 +76,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   Polymer({
 
     is: 'simple-form',
+
+    listeners: {
+      'iron-form-submit': '_formSubmitted'
+    },
+
+    _submit: function() {
+      this.$.form.submit();
+    },
+
+    _formSubmitted: function(event) {
+      console.log("Submitted: ", event.detail);
+    }
 
   });
 </script>

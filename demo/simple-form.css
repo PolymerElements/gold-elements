@@ -53,11 +53,3 @@ paper-button {
   margin-right: 0px;
   margin-top: 50px;
 }
-
-/* TODO: remove when bug fixes land
- * see PolymerElements/gold-cc-input/issues/4,
- * PolymerElements/gold-email-input/issues/4
- */
-gold-cc-input, gold-email-input, paper-input {
-  display: block;
-}
