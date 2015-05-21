@@ -13,6 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import"href="../../iron-flex-layout/classes/iron-flex-layout.html">
 <link rel="import" href="../../paper-styles/color.html">
+<link rel="import" href="../../iron-form/iron-form.html">
 <link rel="import" href="../../paper-input/paper-input.html">
 <link rel="import" href="../../paper-button/paper-button.html">
 <link rel="import" href="../../gold-cc-input/gold-cc-input.html">
@@ -64,51 +65,63 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </style>
   <template>
 
-    <div id="form">
+    <form is="iron-form" id="form">
 
       <h4>Quantity</h4>
-      <paper-input class="quantity" value="1" type="number"></paper-input>
+      <paper-input name="quantity" class="quantity" value="1" type="number"></paper-input>
 
       <h4>Contact Information</h4>
 
 
-      <paper-input label="Name" required auto-validate></paper-input>
-      <paper-input label="Address" required auto-validate></paper-input>
+      <paper-input name="name" label="Name" required auto-validate></paper-input>
+      <paper-input name="address" label="Address" required auto-validate></paper-input>
 
       <div class="horizontal layout">
-        <gold-email-input required auto-validate></gold-email-input>
-        <gold-phone-input required auto-validate></gold-phone-input>
+        <gold-email-input name="email" required auto-validate></gold-email-input>
+        <gold-phone-input name="phone" required auto-validate></gold-phone-input>
       </div>
 
       <h4>Payment</h4>
 
-      <gold-cc-input required auto-validate
+      <gold-cc-input name="cc" required auto-validate
           value="4000 0000 0000 0002"
           label="Sample Valid VISA number">
       </gold-cc-input>
 
       <div class="horizontal layout">
-        <gold-cc-expiration-input required auto-validate></gold-cc-expiration-input>
-        <gold-cc-cvc-input required auto-validate></gold-cc-cvc-input>
-        <gold-zip-input required auto-validate></gold-zip-input>
+        <gold-cc-expiration-input name="cc-expiration" required auto-validate></gold-cc-expiration-input>
+        <gold-cc-cvc-input name="cc-cvc" required auto-validate></gold-cc-cvc-input>
+        <gold-zip-input name="zip" required auto-validate></gold-zip-input>
       </div>
 
       <h4>Shipping</h4>
       <div class="horizontal layout">
-        <paper-input class="country" label="Country" placeholder="United States" required auto-validate></paper-input>
-        <gold-zip-input required auto-validate></gold-zip-input>
+        <paper-input name="country" class="country" label="Country" placeholder="United States" required auto-validate></paper-input>
+        <gold-zip-input name"mail-zip" required auto-validate></gold-zip-input>
       </div>
 
-      <paper-button>Pay</paper-button>
+      <paper-button on-click="_submit">Pay</paper-button>
 
-    </div>
+    </form>
   </template>
 </dom-module>
 
 <script>
   Polymer({
 
-    is: 'complex-form'
+    is: 'complex-form',
+
+    listeners: {
+      'iron-form-submit': '_formSubmitted'
+    },
+
+    _submit: function() {
+      this.$.form.submit();
+    },
+
+    _formSubmitted: function(event) {
+      console.log("Submitted: ", event.detail);
+    }
 
   });
 </script>
