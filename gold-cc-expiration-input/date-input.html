@@ -1,0 +1,114 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-input/iron-input.html">
+<link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="date-validator.html">
+
+<dom-module id="date-input">
+
+  <style>
+    :host {
+      display: inline-block;
+    }
+
+    input[is="iron-input"], span {
+      text-align: center;
+    }
+
+    span {
+      @apply(--paper-input-container-font);
+      opacity: 0.33;
+    }
+  </style>
+
+  <template>
+    <date-validator></date-validator>
+
+    <div class="horizontal layout">
+      <input is="iron-input"
+          required$="[[required]]"
+          maxlength="2"
+          bind-value="{{month}}"
+          placeholder="MM"
+          class="flex">
+      <span>/</span>
+      <input is="iron-input"
+          required$="[[required]]"
+          maxlength="2"
+          bind-value="{{year}}"
+          placeholder="YY"
+          class="flex">
+    </div>
+  </template>
+
+</dom-module>
+
+<script>
+(function() {
+
+  Polymer({
+
+    is: 'date-input',
+
+    behaviors: [
+      Polymer.IronValidatableBehavior
+    ],
+
+    properties: {
+      /**
+       * Set to true to mark the input as required.
+       */
+      required: {
+        type: Boolean,
+        value: false
+      },
+
+      /**
+       * The month component of the date displayed.
+       */
+      month: {
+        type: String
+      },
+
+      /**
+       * The year component of the date displayed.
+       */
+      year: {
+        type: String
+      },
+
+      /**
+       * The date object used by the validator. Has two properties, month and year.
+       */
+      date: {
+        notify: true,
+        type: Object
+      },
+
+      validator: {
+        type: String,
+        value: 'date-validator'
+      }
+    },
+
+    observers: [
+      '_computeDate(month,year)'
+    ],
+
+    _computeDate: function(month, year) {
+      // Months are 0-11.
+      this.date = {month: month, year: year};
+      this.fire('dateChanged', this.date);
+    }
+
+  })
+})();
+</script>

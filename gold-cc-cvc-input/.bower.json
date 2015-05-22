@@ -1,0 +1,48 @@
+{
+  "name": "gold-cc-cvc-input",
+  "version": "0.9.5",
+  "description": "Provides an input field for a credit card cvc number",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "gold",
+    "input"
+  ],
+  "main": [
+    "gold-cc-cvc-input.html"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/gold-cc-cvc-input.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/PolymerElements/gold-cc-cvc-input",
+  "ignore": [],
+  "dependencies": {
+    "iron-icon": "PolymerElements/iron-icon#^0.9.0",
+    "paper-input": "PolymerElements/paper-input#^0.9.0",
+    "paper-styles": "PolymerElements/paper-styles#^0.9.0",
+    "polymer": "Polymer/polymer#^0.9.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^0.9.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^0.9.0",
+    "test-fixture": "PolymerElements/test-fixture#^0.9.0",
+    "web-component-tester": "*",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "_release": "0.9.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.9.5",
+    "commit": "2dec265c61d74e3a3477c7a0dfe03039e68304f4"
+  },
+  "_source": "git://github.com/PolymerElements/gold-cc-cvc-input.git",
+  "_target": "^0.9.0",
+  "_originalSource": "PolymerElements/gold-cc-cvc-input"
+}

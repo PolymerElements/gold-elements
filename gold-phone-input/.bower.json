@@ -1,0 +1,49 @@
+{
+  "name": "gold-phone-input",
+  "version": "0.9.2",
+  "description": "A validating input for a phone number",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "gold",
+    "input",
+    "phone"
+  ],
+  "main": [
+    "gold-phone-input.html"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/gold-phone-input.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/PolymerElements/gold-phone-input",
+  "ignore": [],
+  "dependencies": {
+    "iron-input": "PolymerElements/iron-input#^0.9.0",
+    "paper-input": "PolymerElements/paper-input#^0.9.0",
+    "paper-styles": "PolymerElements/paper-styles#^0.9.0",
+    "polymer": "Polymer/polymer#^0.9.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^0.9.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^0.9.0",
+    "test-fixture": "PolymerElements/test-fixture#^0.9.0",
+    "web-component-tester": "*",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "_release": "0.9.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.9.2",
+    "commit": "f7c28849c59ab5540520f92446481fdd09093ac8"
+  },
+  "_source": "git://github.com/PolymerElements/gold-phone-input.git",
+  "_target": "^0.9.0",
+  "_originalSource": "PolymerElements/gold-phone-input"
+}

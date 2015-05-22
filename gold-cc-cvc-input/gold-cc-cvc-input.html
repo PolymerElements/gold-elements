@@ -1,0 +1,126 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input-behavior.html">
+<link rel="import" href="../paper-input/paper-input-container.html">
+<link rel="import" href="../paper-input/paper-input-error.html">
+<link rel="import" href="../iron-input/iron-input.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
+
+<!--
+`gold-cc-cvc-input` is a Material Design field for entering a Credit Card's CVC
+number. It supports both Amex and non-Amex CVCs.
+
+Example:
+
+    <gold-cc-cvc-input label="CVC"></gold-cc-cvc-input>
+
+    <gold-cc-cvc-input amex></gold-cc-cvc-input>
+
+@group Gold Elements
+@class gold-cc-cvc-input
+-->
+
+<dom-module id="gold-cc-cvc-input">
+  <style>
+  :host {
+    display: block;
+  }
+
+  iron-icon {
+    margin-left: 10px;
+    margin-bottom: 3px;
+  }
+  </style>
+
+  <template>
+    <paper-input-container id="container">
+
+      <template is="dom-if" if="[[label]]">
+        <label>[[label]]</label>
+      </template>
+
+      <div class="horizontal layout">
+        <input is="iron-input" id="input" class="flex"
+            bind-value="{{value}}"
+            prevent-invalid-input allowed-pattern="[0-9]"
+            required$="[[required]]"
+            type="tel"
+            maxlength$="[[_requiredLength]]"
+            name$="[[name]]">
+
+        <iron-icon id="icon" src="cvc_hint.png" hidden="[[amex]]"></iron-icon>
+        <iron-icon id="amexIcon" hidden="[[!amex]]" src="cvc_hint_amex.png"></iron-icon>
+      </div>
+
+      <template is="dom-if" if="[[errorMessage]]">
+        <paper-input-error>[[errorMessage]]</paper-input-error>
+      </template>
+
+    </paper-input-container>
+  </template>
+</dom-module>
+
+<script>
+(function() {
+  Polymer({
+
+    is: 'gold-cc-cvc-input',
+
+    properties: {
+
+      /**
+       * The label for this input.
+       */
+      label: {
+        type: String,
+        value: 'CVC'
+      },
+
+      /**
+       * Set to true if the card that the CVC is for is an AMEX.
+       */
+      amex: {
+        type: Boolean,
+        value: false
+      },
+
+      _requiredLength: {
+        type: Number,
+        computed: '_computeRequiredLength(amex)'
+      }
+    },
+
+    behaviors: [
+      Polymer.PaperInputBehavior
+    ],
+
+    listeners: {
+      'input': '_onInput'
+    },
+
+    ready: function() {
+      this._onInput();
+    },
+
+    _onInput: function() {
+      this.$.container.invalid = this.autoValidate &&
+                                         this.value.length != this._requiredLength;
+    },
+
+    _computeRequiredLength: function(amex) {
+      return this.amex ? 4 : 3;
+    }
+  })
+
+})();
+
+</script>
