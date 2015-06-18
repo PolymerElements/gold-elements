@@ -7,6 +7,10 @@
   ],
   "description": "The gold elements are built for e-commerce use-cases like checkout flows.",
   "main": "gold-elements.html",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/gold-elements.git"
+  },
   "keywords": [
     "web-components",
     "polymer",
