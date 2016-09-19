@@ -15,7 +15,8 @@
     "polymer",
     "google",
     "ecommerce",
-    "checkout"
+    "checkout",
+    "element-collection"
   ],
   "license": "http://polymer.github.io/LICENSE.txt",
   "ignore": [
